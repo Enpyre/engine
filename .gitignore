@@ -1,3 +1,4 @@
-dist/
+dist/*
+!dist/.gitkeep
 __pycache__
 src/engine.egg-info/
