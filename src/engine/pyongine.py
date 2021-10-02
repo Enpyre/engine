@@ -3,6 +3,11 @@ from .core import Core
 from .graphics import Graphics
 
 class Pyongine(Core, Graphics):
+    KEY_UP = 'ArrowUp'
+    KEY_LEFT = 'ArrowLeft'
+    KEY_DOWN = 'ArrowDown'
+    KEY_RIGHT = 'ArrowRight'
+
     def __init__(self):
         self.elapsed = 0.0
         Core.__init__(self)
