@@ -6,3 +6,12 @@ def drawCanvas(x, y, color='#000000'):
 def drawCircle(x, y, r, color='#000000'):
     import js
     js.drawCircle(x, y, r, color)
+
+
+def keyPressed(key):
+    import js
+    try:
+        attr = getattr(js, key)
+        return bool(attr)
+    except AttributeError:
+        return False
