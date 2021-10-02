@@ -14,4 +14,4 @@ class Graphics:
 
     @staticmethod
     def draw_circle(x: int, y: int, r: int, color: str):
-        js_interface.drawCircle(x, y, r, color)
+        return js_interface.drawCircle(x, y, r, color)
