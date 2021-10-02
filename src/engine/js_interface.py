@@ -1,6 +1,6 @@
-def drawCanvas(x, y):
+def drawCanvas(x, y, color='#000000'):
     import js
-    js.drawCanvas(x, y)
+    js.drawCanvas(x, y, color)
 
 
 def drawCircle(x, y, r, color):
