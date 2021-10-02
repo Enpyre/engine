@@ -1,1 +1,3 @@
-from .draw import *
+from .pyongine import Pyongine
+
+pyongine = Pyongine()
