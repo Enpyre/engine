@@ -1,6 +1,8 @@
-from src.engine import pyongine
+from engine import Pyongine
 
-def update(time: float):
+pyongine = Pyongine()
+
+def update(delta: float):
     SPEED = 3
     if not hasattr(pyongine, 'circle'):
         pyongine.circle = pyongine.draw_circle(100, 100, 100, '#ffffff')

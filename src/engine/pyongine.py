@@ -9,7 +9,8 @@ class Pyongine(Core, Graphics):
     KEY_RIGHT = 'ArrowRight'
 
     def __init__(self):
-        self.elapsed = 0.0
+        self.time = 0.0
+        self.frame = 0
         Core.__init__(self)
         Graphics.__init__(self)
 
@@ -20,10 +21,12 @@ class Pyongine(Core, Graphics):
         color: str,
         update: Callable[[float], None],
     ):
-        self.elapsed = 0.0
+        self.time = 0.0
+        self.frame = 0
         self.__update = update
         self.draw_canvas(height, width, color, self.update)
 
     def update(self, delta: float):
-        self.elapsed += delta
-        self.__update(self.elapsed)
+        self.time += delta
+        self.frame += 1
+        self.__update(delta)
