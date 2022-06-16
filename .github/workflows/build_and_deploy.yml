@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ['${{ env.PY37 }}', '${{ env.py38 }}', '${{ env.PY39 }}']
+        python-version: ['${{ env.PY37 }}', '${{ env.PY38 }}', '${{ env.PY39 }}']
     name: Python ${{ matrix.python-version }}
     steps:
       - uses: actions/checkout@v3
