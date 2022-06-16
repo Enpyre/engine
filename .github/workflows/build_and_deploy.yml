@@ -54,3 +54,73 @@ jobs:
       #   run: poetry run pytest
       - name: Build
         run: poetry build
+  deploy_production:
+    name: Deploy Production
+    runs-on: ubuntu-latest
+    needs: lint_and_build
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Cache Poetry cache
+        id: cache-poetry-cache
+        uses: actions/cache@v3
+        with:
+          # This path is specific to Ubuntu
+          path: ~/.cache/pypoetry
+          # Look to see if there is a cache hit for the corresponding
+          key: poetry-cache-${{ matrix.python-version }}-${{ runner.os }}-${{ env.POETRY_VERSION }}
+      - name: Cache Packages
+        id: cache-packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.local
+          key: poetry-${{ matrix.python-version }}-${{ runner.os }}-${{ hashFiles('poetry.lock') }}
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+        with:
+          version: ${{ env.POETRY_VERSION }}
+      - name: Install dependencies
+        run: poetry install
+      - name: Build
+        run: poetry build
+      - name: Deploy
+        run: poetry publish --username __token__ --password ${{ secrets.PYPI_TOKEN }}
+  deploy_develop:
+    name: Deploy Develop
+    runs-on: ubuntu-latest
+    needs: lint_and_build
+    if: github.ref == 'refs/heads/develop'
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Cache Poetry cache
+        id: cache-poetry-cache
+        uses: actions/cache@v3
+        with:
+          # This path is specific to Ubuntu
+          path: ~/.cache/pypoetry
+          # Look to see if there is a cache hit for the corresponding
+          key: poetry-cache-${{ matrix.python-version }}-${{ runner.os }}-${{ env.POETRY_VERSION }}
+      - name: Cache Packages
+        id: cache-packages
+        uses: actions/cache@v3
+        with:
+          path: ~/.local
+          key: poetry-${{ matrix.python-version }}-${{ runner.os }}-${{ hashFiles('poetry.lock') }}
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+        with:
+          version: ${{ env.POETRY_VERSION }}
+      - name: Install dependencies
+        run: poetry install
+      - name: Build
+        run: poetry build
+      - name: Deploy
+        run: poetry publish --username __token__ --password ${{ secrets.PYPI_TOKEN }}
