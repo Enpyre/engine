@@ -12,13 +12,16 @@ on:
 
 env:
   POETRY_VERSION: 1.1.13
+  PY37: 3.7.13
+  PY38: 3.8.12
+  PY39: 3.9.13
 
 jobs:
   lint_and_build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ['3.7.13', '3.8.12', '3.9.13']
+        python-version: ['${{ env.PY37 }}', '${{ env.py38 }}', '${{ env.PY39 }}']
     name: Python ${{ matrix.python-version }}
     steps:
       - uses: actions/checkout@v3
@@ -64,7 +67,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: ${{ env.PY39 }}
       - name: Cache Poetry cache
         id: cache-poetry-cache
         uses: actions/cache@v3
@@ -72,13 +75,13 @@ jobs:
           # This path is specific to Ubuntu
           path: ~/.cache/pypoetry
           # Look to see if there is a cache hit for the corresponding
-          key: poetry-cache-${{ matrix.python-version }}-${{ runner.os }}-${{ env.POETRY_VERSION }}
+          key: poetry-cache-${{ env.PY39 }}-${{ runner.os }}-${{ env.POETRY_VERSION }}
       - name: Cache Packages
         id: cache-packages
         uses: actions/cache@v3
         with:
           path: ~/.local
-          key: poetry-${{ matrix.python-version }}-${{ runner.os }}-${{ hashFiles('poetry.lock') }}
+          key: poetry-${{ env.PY39 }}-${{ runner.os }}-${{ hashFiles('poetry.lock') }}
       - name: Install Poetry
         uses: snok/install-poetry@v1
         with:
@@ -99,7 +102,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: ${{ env.PY39 }}
       - name: Cache Poetry cache
         id: cache-poetry-cache
         uses: actions/cache@v3
@@ -107,13 +110,13 @@ jobs:
           # This path is specific to Ubuntu
           path: ~/.cache/pypoetry
           # Look to see if there is a cache hit for the corresponding
-          key: poetry-cache-${{ matrix.python-version }}-${{ runner.os }}-${{ env.POETRY_VERSION }}
+          key: poetry-cache-${{ env.PY39 }}-${{ runner.os }}-${{ env.POETRY_VERSION }}
       - name: Cache Packages
         id: cache-packages
         uses: actions/cache@v3
         with:
           path: ~/.local
-          key: poetry-${{ matrix.python-version }}-${{ runner.os }}-${{ hashFiles('poetry.lock') }}
+          key: poetry-${{ env.PY39 }}-${{ runner.os }}-${{ hashFiles('poetry.lock') }}
       - name: Install Poetry
         uses: snok/install-poetry@v1
         with:
