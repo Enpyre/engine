@@ -14,7 +14,8 @@ jobs:
   lint_and_build:
     runs-on: ubuntu-latest
     strategy:
-      python-version: ['3.7.13', '3.8.12', '3.9.13']
+      matrix:
+        python-version: ['3.7.13', '3.8.12', '3.9.13']
     name: Python ${{ matrix.python-version }}
     steps:
       - uses: actions/checkout@v3
