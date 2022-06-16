@@ -1,0 +1,44 @@
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - ready_for_review
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  lint_and_build:
+    runs-on: ubuntu-latest
+    strategy:
+      python-version: ['3.7.13', '3.8.12', '3.9.13']
+    name: Python ${{ matrix.python-version }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Cache pip
+        id: cache-pip
+        uses: actions/checkout@v3
+        with:
+          # This path is specific to Ubuntu
+          path: /opt/hostedtoolcache/Python/${{ matrix.python-version }}/x64/
+          # Look to see if there is a cache hit for the corresponding requirements file
+          key: python${{ matrix.python-version }}-${{ runner.os }}-${{ hashFiles('poetry.lock') }}
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+      - name: Install dependencies
+        run: poetry install
+      - name: Flake8
+        run: poetry run flake8
+      - name: Mypy
+        run: poetry run mypy
+      # - name: Pytest
+      #   run: poetry run pytest
+      - name: Build
+        run: poetry run build
