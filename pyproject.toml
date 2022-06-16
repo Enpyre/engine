@@ -1,7 +1,26 @@
-[build-system]
-requires = [
-	"setuptools>=42",
-	"wheel"
-]
+[tool.poetry]
+name = "enpyre"
+version = "0.0.1"
+description = "A Python game engine for the browser"
+authors = ["Lucas Amoedo <lucas.advc@gmail.com>", "Vitor Nere <vitor.nere@hotmail.com>"]
+license = "MPL-2.0"
+readme = "README.md"
+homepage = "https://github.com/Enpyre/engine"
+repository = "https://github.com/Enpyre/engine"
+keywords = ["game", "engine", "python", "browser"]
+packages = [{include = "engine", from = "src"}]
 
-build-backend = "setuptools.build_meta"
+
+
+[tool.poetry.dependencies]
+python = "^3.7"
+
+[tool.poetry.dev-dependencies]
+aiohttp = "^3.8.1"
+aiohttp_cors = "^0.7.0"
+watchfiles = "^0.14.1"
+mypy = "^0.961"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
