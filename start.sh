@@ -1,1 +1,1 @@
-watchfiles server.main src --filter python
+poetry run watchfiles server.main src --filter python
