@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "enpyre"
-version = "0.0.2"
+version = "0.0.3"
 description = "A Python game engine for the browser"
 authors = ["Lucas Amoedo <lucas.advc@gmail.com>", "Vitor Nere <vitor.nere@hotmail.com>"]
 license = "MPL-2.0"
