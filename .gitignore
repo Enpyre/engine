@@ -1,6 +1,5 @@
 dist/*
 !dist/.gitkeep
-!dist/enpyre-0.0.1-py3-none-any.whl
 __pycache__
 src/engine.egg-info/
 *.egg-info
