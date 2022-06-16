@@ -14,6 +14,7 @@ cors = aiohttp_cors.setup(app, defaults={
 
 cors.add(app.router.add_static('/', './dist', show_index=True))
 
+
 def main():
     os.system('poetry build')
     web.run_app(app)

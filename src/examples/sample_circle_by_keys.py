@@ -2,6 +2,7 @@ from engine import Enpyre
 
 enpyre = Enpyre()
 
+
 def update(delta: float):
     SPEED = 3
     if not hasattr(enpyre, 'circle'):
@@ -15,5 +16,6 @@ def update(delta: float):
             enpyre.circle.x -= SPEED
         if enpyre.key_pressed(enpyre.KEY_RIGHT):
             enpyre.circle.x += SPEED
+
 
 enpyre.run(400, 400, '#000000', update)

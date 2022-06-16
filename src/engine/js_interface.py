@@ -24,6 +24,7 @@ def keyPressed(key: str) -> bool:
     except AttributeError:
         return False
 
+
 def create_proxy(obj):
     from pyodide import create_proxy
     return create_proxy(obj)

@@ -5,8 +5,10 @@ enpyre = Enpyre()
 enpyre.x = enpyre.y = START_X = START_Y = 0
 BOARD_WIDTH = BOARD_HEIGHT = 600
 
+
 def fill_cell(x, y, color='#000000'):
     return enpyre.draw_circle(x*100 + 50, y*100 + 50, 50, color)
+
 
 def start_board():
     enpyre.board = [
@@ -15,6 +17,7 @@ def start_board():
         ] for y in range(BOARD_HEIGHT//100)
     ]
 
+
 def move(x, y):
     print(f'Moving to {x}, {y}')
     print(f'Current position: {enpyre.x}, {enpyre.y}')
@@ -22,6 +25,7 @@ def move(x, y):
     fill_cell(x, y, '#FF0000')
     enpyre.x = x
     enpyre.y = y
+
 
 def compute_key():
     if enpyre.key_pressed(enpyre.KEY_UP):
@@ -44,5 +48,6 @@ def update(delta: float):
         move(START_X, START_Y)
     else:
         compute_key()
+
 
 enpyre.run(BOARD_HEIGHT, BOARD_WIDTH, '#ffffff', update)

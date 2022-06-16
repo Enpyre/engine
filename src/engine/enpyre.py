@@ -2,6 +2,7 @@ from typing import Callable
 from .core import Core
 from .graphics import Graphics
 
+
 class Enpyre(Core, Graphics):
     KEY_UP = 'ArrowUp'
     KEY_LEFT = 'ArrowLeft'
