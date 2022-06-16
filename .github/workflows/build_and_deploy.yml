@@ -53,4 +53,4 @@ jobs:
       # - name: Pytest
       #   run: poetry run pytest
       - name: Build
-        run: poetry run build
+        run: poetry build
