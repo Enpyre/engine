@@ -1,9 +1,10 @@
 from typing import Callable
+
 from . import js_interface
 
 
 class Core:
-    __jsupdate: Callable[['Core', float], None]
+    __jsupdate: Callable[["Core", float], None]
     time: float
     frame: int
 

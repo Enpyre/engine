@@ -10,8 +10,6 @@ repository = "https://github.com/Enpyre/engine"
 keywords = ["game", "engine", "python", "browser"]
 packages = [{include = "engine", from = "src"}]
 
-
-
 [tool.poetry.dependencies]
 python = "^3.7"
 
@@ -21,6 +19,7 @@ aiohttp_cors = "^0.7.0"
 watchfiles = "^0.14.1"
 mypy = "^0.961"
 flake8 = "^4.0.1"
+pre-commit = "^2.19.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
@@ -30,3 +29,20 @@ build-backend = "poetry.core.masonry.api"
 python_version = 3.9
 ignore_missing_imports = true
 exclude = 'src/examples'
+
+[tool.black]
+line-length = 100
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''

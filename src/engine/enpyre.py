@@ -1,13 +1,14 @@
 from typing import Callable
+
 from .core import Core
 from .graphics import Graphics
 
 
 class Enpyre(Core, Graphics):
-    KEY_UP = 'ArrowUp'
-    KEY_LEFT = 'ArrowLeft'
-    KEY_DOWN = 'ArrowDown'
-    KEY_RIGHT = 'ArrowRight'
+    KEY_UP = "ArrowUp"
+    KEY_LEFT = "ArrowLeft"
+    KEY_DOWN = "ArrowDown"
+    KEY_RIGHT = "ArrowRight"
 
     def __init__(self):
         self.time = 0.0
