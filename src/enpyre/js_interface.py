@@ -1,4 +1,5 @@
 from typing import Callable
+from typing import Optional
 
 
 def drawCanvas(
@@ -29,3 +30,21 @@ def create_proxy(obj):
     from pyodide import create_proxy
 
     return create_proxy(obj)
+
+
+def addSong(alias: str, url: str, playOnLoad: bool = False):
+    import js
+
+    js.addSong(alias, url, playOnLoad)
+
+
+def playSong(alias: str):
+    import js
+
+    js.playSong(alias)
+
+
+def stopSong(alias: Optional[str] = None):
+    import js
+
+    js.stopSong(alias)
