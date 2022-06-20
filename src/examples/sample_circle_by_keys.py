@@ -1,12 +1,12 @@
-from engine import Enpyre
+from enpyre import Enpyre
 
 enpyre = Enpyre()
 
 
 def update(delta: float):
     SPEED = 3
-    if not hasattr(enpyre, 'circle'):
-        enpyre.circle = enpyre.draw_circle(100, 100, 100, '#ffffff')
+    if not hasattr(enpyre, "circle"):
+        enpyre.circle = enpyre.draw_circle(100, 100, 100, "#ffffff")
     else:
         if enpyre.key_pressed(enpyre.KEY_UP):
             enpyre.circle.y -= SPEED
@@ -18,4 +18,4 @@ def update(delta: float):
             enpyre.circle.x += SPEED
 
 
-enpyre.run(400, 400, '#000000', update)
+enpyre.run(400, 400, "#000000", update)
