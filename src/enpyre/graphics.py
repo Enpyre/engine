@@ -15,3 +15,7 @@ class Graphics:
         return js_interface.create_proxy(
             js_interface.drawCircle(x, y, r, color)
         )
+
+    @staticmethod
+    def add_sprite(image_url: str):
+        return js_interface.addSprite(image_url)

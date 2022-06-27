@@ -48,3 +48,9 @@ def stopSong(alias: Optional[str] = None):
     import js
 
     js.stopSong(alias)
+
+
+def addSprite(imageUrl: str):
+    import js
+
+    return js.addSprite(imageUrl)
